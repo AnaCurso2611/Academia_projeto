@@ -1,0 +1,56 @@
+drop database Academia;
+
+create database Academia;
+
+use Academia;
+
+create table Alunos
+(IDaluno int auto_increment primary key,
+nome varchar(100) not null,
+data_nascimento datetime not null,
+genero enum('M','F') not null,
+telefone varchar(15) not null,
+email varchar(100),
+data_cadastro datetime not null
+);
+
+create table Professores
+(IDprofessor int auto_increment primary key,
+nome varchar(100) not null,
+especialidade varchar(100) not null,
+telefone varchar(15) not null,
+email varchar(100)
+);
+
+create table Planos
+(IDplanos int auto_increment primary key,
+IDaluno int,
+descricao text,
+data_inicio date not null,
+data_fim date not null
+);
+
+create table Treinos
+(IDtreino int auto_increment primary key,
+IDaluno int,
+descricao text,
+data_inicio date not null,
+data_fim date not null
+);
+
+create table Aulas
+(IDaulas int auto_increment primary key,
+tipo_aula varchar(100) not null,
+IDprofessor int,
+horario datetime not null,
+capacidade decimal(10)
+);
+
+create table Pagamentos
+(IDpagamento int auto_increment primary key,
+IDaluno int,
+IDplano int,
+data_pagamento date not null,
+valor_pagamento decimal(10,2),
+forma_pagamento varchar(100)
+);
